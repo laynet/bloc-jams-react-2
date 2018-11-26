@@ -13,7 +13,7 @@ class Album extends Component {
       album: album,
       curentSong: album.songs[0],
       isPlaying: false,
-      hovering: false
+      isMouseInside: false
     };
 
     this.audioElement = document.createElement('audio');
@@ -44,15 +44,16 @@ class Album extends Component {
       this.play();
     }
 
-    handleOnMouseEnter() {
-      this.setState({ hovering: true })
+}
+    handleOnMouseEnter(index) {
+      this.setState({ isMouseInside: index })
     }
 
     handleOnMouseLeave() {
-      this.setState({ hovering: false })
+      this.setState({ isMouseInside: false })
     }
 
-  }
+
 
   render() {
     return(
@@ -76,7 +77,7 @@ class Album extends Component {
               this.state.album.songs.map( (song, index ) =>
                 <tr className="song"
                 key={index} onClick={() => this.handleSongClick(song)}
-                handleOnMouseEnter={() => this.handleOnMouseEnter()}
+                handleOnMouseEnter={() => this.handleOnMouseEnter(index)}
                 handleOnMouseLeave={() => this.handleOnMouseLeave()}>
                   <td>{index+1}</td>
                   <td>{song.title}</td>
