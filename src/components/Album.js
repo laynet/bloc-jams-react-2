@@ -46,15 +46,24 @@ class Album extends Component {
     }
 
 }
-    handleOnMouseEnter(index) {
+    onMouseEnter(index) {
       console.log('hovering');
       this.setState({ hovering: index })
+      //show the fucking button here? idk. kill me
 
     }
 
-    handleOnMouseLeave() {
+    onMouseLeave() {
       this.setState({ hovering: false })
     }
+
+    getIcon(song, index) {
+      if(this.state.hovering === true) {
+        <ion-icon name="arrow-dropright-circle"></ion-icon>
+      }else {
+        <ion-icon name="pause"></ion-icon>
+      }
+  }
 
 
 
@@ -80,9 +89,10 @@ class Album extends Component {
               this.state.album.songs.map( (song, index ) =>
                 <tr className="song"
                 key={index} onClick={() => this.handleSongClick(song)}
-                handleOnMouseEnter={() => this.handleOnMouseEnter(index)}
-                handleOnMouseLeave={() => this.handleOnMouseLeave()}>
+                onMouseEnter={() => this.onMouseEnter(index)}
+                onMouseLeave={() => this.onMouseLeave()}>
                   <td>{index+1}</td>
+                  <td>{this.getIcon(song, index)}</td>
                   <td>{song.title}</td>
                   <td>{song.duration}</td>
                 </tr>
