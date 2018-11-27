@@ -13,7 +13,7 @@ class Album extends Component {
       album: album,
       curentSong: album.songs[0],
       isPlaying: false,
-      isMouseInside: false
+      hovering: false
     };
 
     this.audioElement = document.createElement('audio');
@@ -36,6 +36,7 @@ class Album extends Component {
   }
 
   handleSongClick(song) {
+    console.log('clicked');
     const isSameSong = this.state.curentSong === song;
     if (this.state.isPlaying && isSameSong) {
       this.pause();
@@ -46,11 +47,13 @@ class Album extends Component {
 
 }
     handleOnMouseEnter(index) {
-      this.setState({ isMouseInside: index })
+      console.log('hovering');
+      this.setState({ hovering: index })
+
     }
 
     handleOnMouseLeave() {
-      this.setState({ isMouseInside: false })
+      this.setState({ hovering: false })
     }
 
 
