@@ -63,11 +63,11 @@ class Album extends Component {
         return (
           <Ionicon icon="md-arrow-dropright-circle"/>
         )
-      } else if (this.state.playing === index) {
+      } else if (this.state.isPlaying && this.state.currentSong === index) {
         return (
           <Ionicon icon="md-pause"/>
         )
-    
+
       } else {
         return index + 1;
       }
