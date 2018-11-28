@@ -38,7 +38,7 @@ class Album extends Component {
 
   handleSongClick(song) {
     console.log('clicked');
-    const isSameSong = this.state.curentSong === song;
+    const isSameSong = this.state.currentSong === song;
     if (this.state.isPlaying && isSameSong) {
       this.pause();
     } else {
@@ -50,7 +50,7 @@ class Album extends Component {
     onMouseEnter(index) {
       console.log('hovering', index);
       this.setState({ hovering: index })
-      //show the fucking button here? idk. kill me
+
 
     }
 
