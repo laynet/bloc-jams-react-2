@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Ionicon from 'react-ionicons';
 import albumData from './../data/albums';
 
 class Album extends Component {
@@ -47,7 +48,7 @@ class Album extends Component {
 
 }
     onMouseEnter(index) {
-      console.log('hovering');
+      console.log('hovering', index);
       this.setState({ hovering: index })
       //show the fucking button here? idk. kill me
 
@@ -58,10 +59,17 @@ class Album extends Component {
     }
 
     getIcon(song, index) {
-      if(this.state.hovering === true) {
-        <ion-icon name="arrow-dropright-circle"></ion-icon>
-      }else {
-        <ion-icon name="pause"></ion-icon>
+      if(this.state.hovering === index) {
+        return (
+          <Ionicon icon="md-arrow-dropright-circle"/>
+        )
+      } else if (this.state.playing === index) {
+        return (
+          <Ionicon icon="md-pause"/>
+        )
+    
+      } else {
+        return index + 1;
       }
   }
 
@@ -91,7 +99,6 @@ class Album extends Component {
                 key={index} onClick={() => this.handleSongClick(song)}
                 onMouseEnter={() => this.onMouseEnter(index)}
                 onMouseLeave={() => this.onMouseLeave()}>
-                  <td>{index+1}</td>
                   <td>{this.getIcon(song, index)}</td>
                   <td>{song.title}</td>
                   <td>{song.duration}</td>
@@ -106,3 +113,7 @@ class Album extends Component {
 }
 
 export default Album;
+
+//You can return the song number there as well rather than using  `<td>{index+1}</td>`
+
+//Also, since we are setting `this.state.hovering` to an index value (rather than to true) in` onMouseEnter()`, we should test it against the parameter `index` inside `getIcon` to determine whether a particular song is being hovered over.
