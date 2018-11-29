@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Ionicon from 'react-ionicons';
 import albumData from './../data/albums';
+import PlayerBar from './PlayerBar';
 
 class Album extends Component {
   constructor(props) {
@@ -107,6 +108,11 @@ class Album extends Component {
             }
            </tbody>
          </table>
+         <PlayerBar
+         isPlaying={this.state.isPlaying}
+         currentSong={this.state.currentSong}
+         handleSongclick={() => this.handleSongClick(this.state.currentSong)}
+         />
       </section>
     );
   }
