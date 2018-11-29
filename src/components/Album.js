@@ -49,7 +49,6 @@ class Album extends Component {
 
 }
     onMouseEnter(index) {
-      console.log('hovering', index);
       this.setState({ hovering: index })
 
 
@@ -75,11 +74,19 @@ class Album extends Component {
   }
 
   handlePrevClick() {
-    const currentIndex = this.state.album.song.findIndex(song => this.state.currentSong === song);
-    const newIndex = Math.max(0, currentIndex -1);
-    const newSong = this.state.album.songs[newIndex];
-    this.setSong(newSong);
-    this.play();
+    const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+      const newIndex = Math.max(0, currentIndex - 1);
+      const newSong = this.state.album.songs[newIndex];
+      this.setSong(newSong);
+      this.play();
+  }
+
+  handleNextClick() {
+    const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+      const newIndex = Math.max(0, currentIndex + 1);
+      const newSong = this.state.album.songs[newIndex];
+      this.setSong(newSong);
+      this.play();
   }
 
 
@@ -123,6 +130,7 @@ class Album extends Component {
          currentSong={this.state.currentSong}
          handleSongclick={() => this.handleSongClick(this.state.currentSong)}
          handlePrevClick={() => this.handlePrevClick()}
+         handleNextClick={() => this.handleNextClick()}
          />
       </section>
     );

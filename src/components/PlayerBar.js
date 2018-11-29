@@ -7,14 +7,14 @@ class PlayerBar extends Component {
       <section className="player-bar">
         player bar goes here
         <section id="button">
-          <button id="previous" onClick={this.props.handlePrevclick}>
+          <button id="previous" onClick={this.props.handlePrevClick}>
             <Ionicon icon="md-skip-backward" />
           </button>
           <button id="play-pause" onClick={this.props.handleSongClick}>
             <Ionicon icon={this.props.isPlaying ? 'md-pause' : 'md-play'}/>
           </button>
           <button id="next">
-            <Ionicon icon="md-skip-forward"/>
+            <Ionicon icon="md-skip-forward" onClick={this.props.handleNextClick}/>
           </button>
         </section>
         <section id="time-control">
