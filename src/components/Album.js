@@ -60,7 +60,7 @@ class Album extends Component {
     }
 
     getIcon(song, index) {
-      if(this.state.hovering === index) {
+      if(this.state.hovering === index  && !this.state.isPlaying) {
         return (
           <Ionicon icon="md-arrow-dropright-circle"/>
         )
@@ -72,6 +72,14 @@ class Album extends Component {
       } else {
         return index + 1;
       }
+  }
+
+  handlePrevClick() {
+    const currentIndex = this.state.album.song.findIndex(song => this.state.currentSong === song);
+    const newIndex = Math.max(0, currentIndex -1);
+    const newSong = this.state.album.songs[newIndex];
+    this.setSong(newSong);
+    this.play();
   }
 
 
@@ -112,6 +120,7 @@ class Album extends Component {
          isPlaying={this.state.isPlaying}
          currentSong={this.state.currentSong}
          handleSongclick={() => this.handleSongClick(this.state.currentSong)}
+         handlePrevClick={() => this.handlPrevClick()}
          />
       </section>
     );
