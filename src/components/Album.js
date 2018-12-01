@@ -15,9 +15,7 @@ class Album extends Component {
       album: album,
       curentSong: album.songs[0],
       isPlaying: false,
-      hovering: false,
-      maxSongs: false,
-      doesSongExist: false
+      hovering: false
     };
 
     this.audioElement = document.createElement('audio');
@@ -32,14 +30,6 @@ class Album extends Component {
   pause() {
     this.audioElement.pause();
     this.setState({ isPlaying: false });
-  }
-
-  stop() {
-    this.audioElement.stop();
-    this.setState({ isPlaying: false });
-    this.setState({ maxSongs: true });
-    this.setState({ doesSongExist: false });
-
   }
 
   setSong(song) {
@@ -85,7 +75,6 @@ class Album extends Component {
 
   handlePrevClick() {
     const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
-      console.log(currentIndex);
       const newIndex = Math.max(0, currentIndex - 1);
       const newSong = this.state.album.songs[newIndex];
       this.setSong(newSong);
@@ -112,7 +101,6 @@ class Album extends Component {
     };
 
   }
-
 
 
 
