@@ -13,18 +13,18 @@ class PlayerBar extends Component {
           <button id="play-pause" onClick={this.props.handleSongClick}>
             <Ionicon icon={this.props.isPlaying ? 'md-pause' : 'md-play'}/>
           </button>
-          <button id="next">
-            <Ionicon icon="md-skip-forward" onClick={this.props.handleNextClick}/>
+          <button id="next" onClick={this.props.handleNextClick}>
+            <Ionicon icon="md-skip-forward" />
           </button>
         </section>
         <section id="time-control">
           <div className="current-time">-:--</div>
-          <input type="range" className="seek-bar" value="0" />
+          <input type="range" className="seek-bar"  />
           <div className="total-time">-:--</div>
         </section>
         <section id="volume-control">
           <Ionicon icon="md-volume-low"/>
-          <input type="range" className="seek-bar" value="80" />
+          <input type="range" className="seek-bar"  />
           <Ionicon icon="md-volume-high"/>
         </section>
       </section>
