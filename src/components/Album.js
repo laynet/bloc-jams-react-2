@@ -20,12 +20,18 @@ class Album extends Component {
 
     this.audioElement = document.createElement('audio');
     this.audioElement.src = album.songs[0].audioSrc;
+    this.state.currentSong = album.songs[0];
   }
 
   play() {
     this.audioElement.play();
     this.setState({ isPlaying: true });
+    console.log(this.state.album.songs.findIndex(song => this.state.currentSong === song));
+    console.log("currentSong: " + this.state.currentSong);
   }
+
+
+
 
   pause() {
     this.audioElement.pause();
@@ -33,6 +39,7 @@ class Album extends Component {
   }
 
   setSong(song) {
+    console.log("setSong called");
     this.audioElement.src = song.audioSrc;
     this.setState({ currentSong: song });
   }
@@ -82,24 +89,14 @@ class Album extends Component {
   }
 
   handleNextClick() {
-    const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
-    console.log(this.state.album );
-    const newIndex = Math.max(0, currentIndex + 1);
-    const newSong = this.state.album.songs[newIndex];
-    this.setSong(newSong);
-    this.play();
-    let counter = 0
-    if (counter < 5) {
-      console.log(counter);
-      counter ++;
-      if (counter === 5) {
-        this.state.album.songs[0].audioSrc = null;
-        // this.audioElement.src = this.state.album.songs[0].audioSrc;
-        this.audioElement.stop();
-      }
-      // this.stop();
-    };
-
+    let currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+    console.log(currentIndex);
+    if (currentIndex < this.state.album.songs.length -1) {
+      currentIndex = currentIndex + 1;
+      const newSong = this.state.album.songs[currentIndex];
+      this.setSong(newSong);
+      this.play();
+    }
   }
 
 
