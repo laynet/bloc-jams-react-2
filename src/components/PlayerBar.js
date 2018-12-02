@@ -5,7 +5,6 @@ class PlayerBar extends Component {
   render() {
     return(
       <section className="player-bar">
-        player bar goes here
         <section id="button">
           <button id="previous" onClick={this.props.handlePrevClick}>
             <Ionicon icon="md-skip-backward" />
@@ -30,9 +29,17 @@ class PlayerBar extends Component {
          />
          <div className="total-time">{this.props.duration}</div>
         </section>
-        <section id="volume-control">
+        <section id="volume-control" >
           <Ionicon icon="md-volume-low"/>
-          <input type="range" className="seek-bar" value="80" />
+          <input
+            type="range"
+            className="seek-bar"
+            value={this.props.volume}
+            max="1"
+            min="0"
+            step="0.01"
+            onChange={this.props.handleVolumeChange}
+           />
           <Ionicon icon="md-volume-high"/>
         </section>
       </section>

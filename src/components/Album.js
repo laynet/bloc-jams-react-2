@@ -18,7 +18,6 @@ class Album extends Component {
       duration: album.songs[0].duration,
       isPlaying: false,
       hovering: false
-      //valiabdvliabv
   };
 
     this.audioElement = document.createElement('audio');
@@ -127,6 +126,18 @@ class Album extends Component {
          this.setState({ currentTime: newTime });
        }
 
+    //formatTime(//time in seonds) {
+      //convert time in seconds into a string with format of M:SS
+      //if formatTime is passed and invalid/non-numeric value, it should return a fallback value of "-:--"
+    //}
+
+    handleVolumeChange(evt) {
+      this.audioElement.volume = evt.target.value;
+      console.log(this.audioElement.volume, evt.target.value);
+    }
+
+
+
 
 
 
@@ -169,10 +180,12 @@ class Album extends Component {
          currentSong={this.state.currentSong}
          currentTime={this.audioElement.currentTime}
          duration={this.audioElement.duration}
+         volume={this.state.volume}
          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
          handlePrevClick={() => this.handlePrevClick()}
          handleNextClick={() => this.handleNextClick()}
          handleTimeChange={(e) => this.handleTimeChange(e)}
+         handleVolumeChange={(evt) => this.handleVolumeChange(evt)}
          />
       </section>
     );
