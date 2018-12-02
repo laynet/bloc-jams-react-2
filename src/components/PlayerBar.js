@@ -30,7 +30,7 @@ class PlayerBar extends Component {
          <div className="total-time">{this.props.duration}</div>
         </section>
         <section id="volume-control" >
-          <Ionicon icon="md-volume-low"/>
+          <Ionicon icon="md-volume-down"/>
           <input
             type="range"
             className="seek-bar"
@@ -40,7 +40,7 @@ class PlayerBar extends Component {
             step="0.01"
             onChange={this.props.handleVolumeChange}
            />
-          <Ionicon icon="md-volume-high"/>
+          <Ionicon icon="md-volume-up"/>
         </section>
       </section>
     );

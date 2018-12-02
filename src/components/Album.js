@@ -120,20 +120,23 @@ class Album extends Component {
       }
     }
 
-    handleTimeChange(e) {
-         const newTime = this.audioElement.duration * e.target.value;
+    handleTimeChange(evt) {
+         const newTime = this.audioElement.duration * evt.target.value;
          this.audioElement.currentTime = newTime;
          this.setState({ currentTime: newTime });
        }
 
-    //formatTime(//time in seonds) {
-      //convert time in seconds into a string with format of M:SS
+    formatTime(tis) {
+      let minutes = Math.floor(tis / 60);
+      let seconds = tis % 60;
+      let time = minutes + ":" + seconds;
+      return time;
       //if formatTime is passed and invalid/non-numeric value, it should return a fallback value of "-:--"
-    //}
+    }
 
     handleVolumeChange(evt) {
       this.audioElement.volume = evt.target.value;
-      console.log(this.audioElement.volume, evt.target.value);
+
     }
 
 
@@ -184,7 +187,7 @@ class Album extends Component {
          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
          handlePrevClick={() => this.handlePrevClick()}
          handleNextClick={() => this.handleNextClick()}
-         handleTimeChange={(e) => this.handleTimeChange(e)}
+         handleTimeChange={(evt) => this.handleTimeChange(evt)}
          handleVolumeChange={(evt) => this.handleVolumeChange(evt)}
          />
       </section>
