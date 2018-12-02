@@ -18,6 +18,7 @@ class Album extends Component {
       duration: album.songs[0].duration,
       isPlaying: false,
       hovering: false
+      //valiabdvliabv
   };
 
     this.audioElement = document.createElement('audio');
