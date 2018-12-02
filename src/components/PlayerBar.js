@@ -21,7 +21,8 @@ class PlayerBar extends Component {
          <input
            type="range"
            className="seek-bar"
-           value={(this.props.currentTime / this.props.duration) || 0}
+           value={this.props.formatTime}
+           //(this.props.currentTime / this.props.duration) || 0
            max="1"
            min="0"
            step="0.01"

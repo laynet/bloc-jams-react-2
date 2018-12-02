@@ -126,7 +126,8 @@ class Album extends Component {
          this.setState({ currentTime: newTime });
        }
 
-    formatTime(tis) {
+    formatTime() {
+      let tis = this.audioElement.currentTime;
       let minutes = Math.floor(tis / 60);
       let seconds = tis % 60;
       let time = minutes + ":" + seconds;
@@ -184,6 +185,7 @@ class Album extends Component {
          currentTime={this.audioElement.currentTime}
          duration={this.audioElement.duration}
          volume={this.state.volume}
+         formatTime={this.state.formatTime}
          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
          handlePrevClick={() => this.handlePrevClick()}
          handleNextClick={() => this.handleNextClick()}
