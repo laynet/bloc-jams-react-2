@@ -126,13 +126,19 @@ class Album extends Component {
          this.setState({ currentTime: newTime });
        }
 
-    formatTime() {
-      let tis = this.audioElement.currentTime;
+    formatTime(tis) {
+      if (isNaN(tis)){
+        return "-:--";
+      } else {
       let minutes = Math.floor(tis / 60);
-      let seconds = tis % 60;
+      let seconds = Math.floor(tis % 60);
       let time = minutes + ":" + seconds;
-      return time;
-      //if formatTime is passed and invalid/non-numeric value, it should return a fallback value of "-:--"
+      if (seconds < 10) {
+        return minutes + ":0" + seconds;
+      } else {
+        return time;
+      }
+      };
     }
 
     handleVolumeChange(evt) {
@@ -185,7 +191,7 @@ class Album extends Component {
          currentTime={this.audioElement.currentTime}
          duration={this.audioElement.duration}
          volume={this.state.volume}
-         formatTime={this.state.formatTime}
+         formatTime={(tis) => this.formatTime(tis)}
          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
          handlePrevClick={() => this.handlePrevClick()}
          handleNextClick={() => this.handleNextClick()}
