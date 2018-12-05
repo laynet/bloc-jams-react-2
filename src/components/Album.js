@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Ionicon from 'react-ionicons';
 import albumData from './../data/albums';
 import PlayerBar from './PlayerBar';
+import { Table } from 'reactstrap';
 
 class Album extends Component {
   constructor(props) {
@@ -166,7 +167,7 @@ class Album extends Component {
          </section>
          <table id="song-list">
            <colgroup>
-             <col id="song-number-column" />
+             <col id="song-number-column"/>
              <col id="song-title-column" />
              <col id="song-duration-column" />
            </colgroup>

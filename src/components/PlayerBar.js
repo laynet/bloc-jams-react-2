@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Ionicon from 'react-ionicons';
+import { Button } from 'reactstrap';
 
 class PlayerBar extends Component {
   render() {
@@ -9,7 +10,8 @@ class PlayerBar extends Component {
           <button id="previous" onClick={this.props.handlePrevClick}>
             <Ionicon icon="md-skip-backward" />
           </button>
-          <button id="play-pause" onClick={this.props.handleSongClick}>
+          <button id="play-pause"
+          onClick={this.props.handleSongClick}>
             <Ionicon icon={this.props.isPlaying ? 'md-pause' : 'md-play'}/>
           </button>
           <button id="next" onClick={this.props.handleNextClick}>
